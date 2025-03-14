@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Médicament</title>
+    <link rel="stylesheet" href="CSS fromMed.css">
+</head>
+<body>
+    <h1>Ajouter un Médicament</h1>
+    <form action="ajoutMedicament.php" method="POST">
+        <label for="nom">Nom du Médicament:</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+
+        <label for="prix">Prix:</label><br>
+        <input type="number" id="prix" name="prix" min="0" step="0.01" required><br><br>
+
+        <label for="quantite">Quantité:</label><br>
+        <input type="number" id="quantite" name="quantite" min="0" required><br><br>
+
+        <label for="pharmacie">ID de la Pharmacie:</label><br>
+        <input type="number" id="pharmacie" name="pharmacie" min="1" required><br><br>
+
+        <input type="submit" value="Ajouter le Médicament">
+    </form>
+</body>
+</html>

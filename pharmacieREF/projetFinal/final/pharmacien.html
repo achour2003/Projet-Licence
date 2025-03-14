@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Pharmacie</title>
+    <link rel="stylesheet" href="CSS pharamacien.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="logo.png" alt="Logo PharmaREF" style="height: 40px;">
+                <h1>PharmaREF</h1>
+            </div>
+            <div class="nav-links">
+                <a href="ac.php">Accueil</a>
+                <a href="pharmacien.html">Pharmacien</a>
+                <a href="recherche.html">Médicaments</a>
+                <a href="profile.html" id="loginButton">profil</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="form-container">
+        <h1>Ajouter une Pharmacie</h1>
+        <form action="ajouter_pharmacie.php" method="POST">
+            <label for="nom">Nom de la Pharmacie:</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="adresse">Adresse:</label>
+            <textarea id="adresse" name="adresse" required></textarea>
+
+            <label for="ouverture">Heures d'Ouverture:</label>
+            <input type="time" id="ouverture" name="ouverture" required>
+
+            <label for="fermeture">Heures de Fermeture:</label>
+            <input type="time" id="fermeture" name="fermeture" required>
+
+            <label for="jours">Jours de Travail:</label>
+            <input type="text" id="jours" name="jours" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="ville">Ville:</label>
+            <input type="text" id="ville" name="ville" required>
+
+            <input type="submit" value="Ajouter la Pharmacie">
+        </form>
+        <a href="connexionPharmacie.php" class="back-home">Connexion</a>
+    </div>
+</body>
+</html>

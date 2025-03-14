@@ -1,0 +1,104 @@
+/* Réinitialisation de quelques styles par défaut pour une cohérence entre les navigateurs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f7;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Style pour les en-têtes */
+h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles pour le formulaire de recherche */
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Conteneur pour les résultats, utilisant Flexbox */
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Alignement avec espace autour des éléments */
+    gap: 20px;
+    padding-top: 20px;
+}
+
+/* Style des cartes de résultats */
+.medicament-info {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: calc(100% / 3 - 40px); /* Trois éléments par ligne, avec espace */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.medicament-image {
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.medicament-nom {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.medicament-description, .medicament-categorie, .medicament-pharmacie, .medicament-prix, .medicament-quantite {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+    .medicament-info {
+        width: calc(100% / 2 - 20px); /* Deux éléments par ligne sur tablettes */
+    }
+}
+
+@media (max-width: 480px) {
+    .medicament-info {
+        width: 100%; /* Un élément par ligne sur mobiles */
+    }
+}

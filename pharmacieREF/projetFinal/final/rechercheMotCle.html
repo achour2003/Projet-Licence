@@ -1,0 +1,135 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS rechercheMotCle.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    
+<h1>Recherche de médicaments</h1>
+<input type="text" id="searchTerm" placeholder="Entrez un mot-clé...">
+<button id="searchButton">Rechercher</button>
+<div id="results"></div>
+<div id="medicamentsList"></div>
+
+<script>
+
+document.getElementById('searchButton').addEventListener('click', function() {
+    var searchTerm = document.getElementById('searchTerm').value;
+    fetch('rechercheMotCle.php?search=' + encodeURIComponent(searchTerm))
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Assurez-vous que la réponse peut être convertie en JSON
+    })
+    .then(data => {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = ''; // Nettoyez les résultats précédents
+
+        if (data.message) {
+            resultsContainer.innerHTML = data.message; // Affiche un message s'il n'y a pas de résultats
+        } else {
+            data.forEach(medicament => {
+                const div = document.createElement('div');
+                div.innerHTML = `<h4>${medicament.nom_medicament}</h4>
+                                <p>Description: ${medicament.description}</p>
+                                <img src="${medicament.image}" alt="Image de médicament">
+                                <p>Catégorie: ${medicament.categorie}</p>
+                                <p>Pharmacie: ${medicament.pharmacie}</p>
+                                <p>Prix: €${medicament.prix}</p>
+                                <p>Quantité: ${medicament.quantite}</p>`;
+                resultsContainer.appendChild(div);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Erreur lors de la récupération des données:', error);
+        document.getElementById('results').innerHTML = 'Erreur lors de la recherche. Veuillez réessayer plus tard.';
+    });
+});
+
+</script> 
+    
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS rechercheMotCle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Recherche de médicaments</title>
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="logo.png" alt="Logo PharmaREF" style="height: 40px;">
+                <h1>PharmaREF</h1>
+            </div>
+            <div class="nav-links">
+                <a href="ac.php">Accueil</a>
+                <a href="pharmacien.html">Pharmacien</a>
+                <a href="recherche.html">Médicaments</a>
+                <a href="profile.html">profil</a>
+                <a href="connexion.php" id="loginButton">Connexion</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <h1>Recherche de médicaments</h1>
+        <input type="text" id="searchTerm" placeholder="Entrez un mot-clé...">
+        <button id="searchButton">Rechercher</button>
+        <div id="results"></div>
+        <div id="medicamentsList"></div>
+    </div>
+
+    
+
+    <script>
+   
+    document.getElementById('searchButton').addEventListener('click', function() {
+        var searchTerm = document.getElementById('searchTerm').value;
+        fetch('rechercheMotCle.php?search=' + encodeURIComponent(searchTerm))
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = ''; 
+
+            if (data.message) {
+                resultsContainer.innerHTML = data.message;
+            } else {
+                data.forEach(medicament => {
+                    const div = document.createElement('div');
+                    div.classList.add('medicament-info');
+                    div.innerHTML = `<h4>${medicament.nom_medicament}</h4>
+                                    <p>Description: ${medicament.description}</p>
+                                    <img src="${medicament.image}" alt="Image de médicament">
+                                    <p>Catégorie: ${medicament.categorie}</p>
+                                    <p>Pharmacie: ${medicament.pharmacie}</p>
+                                    <p>Prix: €${medicament.prix}</p>
+                                    <p>Quantité: ${medicament.quantite}</p>`;
+                    resultsContainer.appendChild(div);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des données:', error);
+            document.getElementById('results').innerHTML = 'Erreur lors de la recherche. Veuillez réessayer plus tard.';
+        });
+    });
+    </script> 
+</body>
+</html>

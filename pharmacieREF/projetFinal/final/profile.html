@@ -1,0 +1,185 @@
+<!--
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage des données</title>
+    <link rel="stylesheet" href="CSS profile.css">
+</head>
+<body>
+    <h1>Affichage des données</h1>
+    
+
+    <div class="container" id="donneesContainer"></div>
+    <a href="ac.php">Accueil</a>
+    
+    <script>
+        // Fonction pour récupérer les données depuis l'API
+        fetch('essaie.php')
+        .then(response => response.json())
+        .then(data => {
+            // Affichage des données dans le conteneur
+            const donneesContainer = document.getElementById('donneesContainer');
+            
+            // Parcourir les données
+            data.forEach(donnee => {
+                // Créer une boîte d'information pour chaque utilisateur
+                const userDiv = document.createElement('div');
+                userDiv.classList.add('user-info');
+                
+                // Créer des éléments pour afficher les données
+                const nomPara = document.createElement('p');
+                const prenomPara = document.createElement('p');
+                const agePara = document.createElement('p');
+                const emailPara = document.createElement('p');
+                const photoImg = document.createElement('img');
+                
+                // Attribution des données aux éléments
+                nomPara.textContent = "Nom : " + donnee.nomU;
+                prenomPara.textContent = "Prénom : " + donnee.prenom;
+                agePara.textContent = "Âge : " + donnee.age + " ans";
+                emailPara.textContent = "E-mail : " + donnee.email;
+                photoImg.src = "data:image/jpg;base64," + donnee.photo; // Afficher la photo de profil
+                
+                // Ajouter les éléments à la boîte d'information
+                userDiv.appendChild(nomPara);
+                userDiv.appendChild(prenomPara);
+                userDiv.appendChild(agePara);
+                userDiv.appendChild(emailPara);
+                userDiv.appendChild(photoImg);
+                
+                // Ajouter la boîte d'information au conteneur principal
+                donneesContainer.appendChild(userDiv);
+            });
+        })
+        .catch(error => console.error('Erreur lors de la récupération des données depuis l\'API :', error));
+    </script>
+</body>
+</html>
+-->
+<!--
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Affichage des données</title>
+</head>
+<body>
+    <h1>Affichage des données</h1>
+    
+    
+    <div id="donneesContainer"></div>
+    
+    <script>
+        // Fonction pour récupérer les données depuis l'API
+        fetch('essaie.php')
+        .then(response => response.json())
+        .then(data => {
+            // Affichage des données dans le conteneur
+            const donneesContainer = document.getElementById('donneesContainer');
+            
+            // Parcourir les données
+            data.forEach(donnee => {
+                // Créer des éléments pour afficher les données
+                const div = document.createElement('div');
+                const emailPara = document.createElement('p');
+                const agePara = document.createElement('p');
+                const photoImg = document.createElement('img');
+                
+                // Attribution des données aux éléments
+                emailPara.textContent = "E-mail : " + donnee.email;
+                agePara.textContent = "Âge : " + donnee.age + " ans";
+                photoImg.src = "data:image/jpg;base64," + donnee.photo; // Afficher la photo de profil
+                
+                // Ajouter les éléments au conteneur
+                div.appendChild(emailPara);
+                div.appendChild(agePara);
+                div.appendChild(photoImg);
+                donneesContainer.appendChild(div);
+            });
+        })
+        .catch(error => console.error('Erreur lors de la récupération des données depuis l\'API :', error));
+    </script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage des données</title>
+    <link rel="stylesheet" href="CSS profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="logo.png" alt="Logo PharmaREF" style="height: 40px;">
+                <h1>PharmaREF</h1>
+            </div>
+            <div class="nav-links">
+                <a href="ac.php">Accueil</a>
+                <a href="pharmacien.html">Pharmacien</a>
+                <a href="recherche.html">Médicaments</a>
+                <a href="#commentaires">Commentaires</a>
+                <a href="Connexion.php" id="loginButton">Connexion</a>
+            </div>
+        </div>
+    </header>
+    
+    <section id="contenair" class="container">
+        <h1>Affichage des données</h1>
+        <div id="donneesContainer"></div>
+        <a href="ac.php" class="back-home">Accueil</a>
+    </section>
+    
+    <script>
+        
+        fetch('essaie.php')
+        .then(response => response.json())
+        .then(data => {
+            
+            const donneesContainer = document.getElementById('donneesContainer');
+            
+            
+            data.forEach(donnee => {
+                
+                const userDiv = document.createElement('div');
+                userDiv.classList.add('user-info');
+                
+                
+                const nomPara = document.createElement('p');
+                const prenomPara = document.createElement('p');
+                const agePara = document.createElement('p');
+                const emailPara = document.createElement('p');
+                const photoImg = document.createElement('img');
+                
+                
+                nomPara.textContent = "Nom : " + donnee.nomU;
+                prenomPara.textContent = "Prénom : " + donnee.prenom;
+                agePara.textContent = "Âge : " + donnee.age + " ans";
+                emailPara.textContent = "E-mail : " + donnee.email;
+                photoImg.src = "data:image/jpg;base64," + donnee.photo;
+                
+                
+                userDiv.appendChild(nomPara);
+                userDiv.appendChild(prenomPara);
+                userDiv.appendChild(agePara);
+                userDiv.appendChild(emailPara);
+                userDiv.appendChild(photoImg);
+                
+                
+                donneesContainer.appendChild(userDiv);
+            });
+        })
+        .catch(error => console.error('Erreur lors de la récupération des données depuis l\'API :', error));
+    </script>
+</body>
+</html>
+

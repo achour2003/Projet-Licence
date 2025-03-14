@@ -1,0 +1,34 @@
+/* Conteneur pour les résultats de recherche de médicaments */
+#results {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante */
+    justify-content: space-around; /* Ajuste l'espacement autour des éléments */
+    padding: 20px;
+    gap: 20px; /* Espace entre les cadres de médicaments */
+}
+
+/* Style des informations sur les médicaments */
+.medicament-info {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px; /* Assure un petit espace entre les cadres même sans flex gap */
+    text-align: left;
+    width: calc(33% - 20px); /* Trois éléments par ligne, ajustez selon le design */
+    flex: 1 1 200px; /* Flexibilité de croissance et de réduction, minimum 200px */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .medicament-info {
+        width: calc(50% - 20px); /* Deux éléments par ligne sur les écrans plus petits */
+    }
+}
+
+@media (max-width: 480px) {
+    .medicament-info {
+        width: 100%; /* Un élément par ligne sur les très petits écrans */
+    }
+}
