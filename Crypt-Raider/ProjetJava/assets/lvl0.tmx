@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="80" tileheight="80" infinite="0" nextlayerid="7" nextobjectid="207">
+ <tileset firstgid="1" source="arrierePlan.tsx"/>
+ <tileset firstgid="5" source="murr.tsx"/>
+ <tileset firstgid="6" source="murIndistructible.tsx"/>
+ <tileset firstgid="7" source="bbeee-removebg-preview.tsx"/>
+ <tileset firstgid="8" source="fromage.tsx"/>
+ <tileset firstgid="9" source="Cle-removebg-preview.tsx"/>
+ <tileset firstgid="10" source="rocherere-removebg-preview.tsx"/>
+ <tileset firstgid="11" source="porte.tsx"/>
+ <tileset firstgid="12" source="fin.tsx"/>
+ <tileset firstgid="13" source="boule-removebg-preview(1).tsx"/>
+ <tileset firstgid="14" source="perso-removebg-preview.tsx"/>
+ <layer id="1" name="Calque de Tuiles 1" width="15" height="9">
+  <data encoding="csv">
+1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,
+1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,
+1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,
+1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+3,4,3,4,3,4,3,4,3,4,3,4,3,4,3,
+1,2,1,2,1,2,1,2,1,2,1,2,1,2,1
+</data>
+ </layer>
+ <objectgroup id="2" name="Murs">
+  <object id="1" x="0" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="119" x="640" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="120" x="640" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="111" x="320" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="126" x="320" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="112" x="960" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="121" x="960" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="107" x="160" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="116" x="800" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="122" x="800" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="108" x="480" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="127" x="480" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="113" x="1120" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="105" x="80" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="132" x="80" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="202" x="160" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="118" x="720" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="123" x="720" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="110" x="400" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="128" x="400" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="114" x="1040" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="124" x="1040" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="106" x="240" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="131" x="240" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="117" x="880" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="125" x="880" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="109" x="560" y="0" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="129" x="560" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="2" x="0" y="80" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="101" x="1120" y="80" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="81" x="0" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="100" x="1120" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="84" x="0" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="99" x="1120" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="85" x="0" y="320" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="98" x="1120" y="320" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="90" x="0" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="97" x="1120" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="91" x="0" y="480" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="96" x="1120" y="480" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="92" x="0" y="560" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="95" x="1120" y="560" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="93" x="0" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="94" x="1120" y="640" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="133" x="640" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="134" x="880" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="135" x="720" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="143" x="400" y="5610" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="166" x="45.3333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="167" x="125.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="168" x="205.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="169" x="285.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="170" x="365.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="171" x="445.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="172" x="525.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="173" x="605.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="174" x="685.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="175" x="765.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="176" x="845.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="177" x="925.333" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="178" x="1005.33" y="-109.333" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="179" x="80" y="320" width="80" height="80">
+   <properties>
+    <property name="type" value="Destructible"/>
+   </properties>
+  </object>
+  <object id="180" x="160" y="320" width="80" height="80">
+   <properties>
+    <property name="type" value="Destructible"/>
+   </properties>
+  </object>
+  <object id="181" x="240" y="320" width="80" height="80">
+   <properties>
+    <property name="type" value="Destructible"/>
+   </properties>
+  </object>
+  <object id="182" x="400" y="80" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="183" x="400" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="184" x="400" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="185" x="560" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="186" x="960" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="187" x="560" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="188" x="560" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="189" x="880" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="190" x="640" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="191" x="720" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="193" x="720" y="480" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="194" x="880" y="480" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="195" x="880" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="196" x="960" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Indestructible"/>
+   </properties>
+  </object>
+  <object id="198" x="640" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="199" x="720" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="203" x="800" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="200" x="960" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+  <object id="201" x="1040" y="400" width="80" height="80">
+   <properties>
+    <property name="type" value="Mangeable"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="Cle-Porte"/>
+ <objectgroup id="4" name="Deplacable">
+  <object id="197" x="800" y="160" width="80" height="80">
+   <properties>
+    <property name="type" value="BouleMagique"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Fin">
+  <object id="192" x="800" y="480" width="80" height="80">
+   <properties>
+    <property name="requiredMagicBalls" value="1"/>
+    <property name="type" value="Fin"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Personnage">
+  <object id="18" x="80" y="240" width="80" height="80">
+   <properties>
+    <property name="type" value="Joueur"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,352 @@
+groupe:
+--Nom: DJERADA 
+--Prenom: Achour
+
+
+
+
+
+
+
+
+Ce que j’ai réussi à accomplir : 
+▶ Affichage de la carte
+▶ Déplacement de Rahan (avec une vitesse de 1)
+▶ Jouer une partie à partir d’une description donnée sur la sortie standard
+▶ Gestion des rochers
+▶ Gestion des combats
+▶ Gestion de la nourriture
+▶ Fin de partie lorsque Rahan meurt
+▶ Pas plus d’un objet par classe dans l’équipement.
+▶ La carte s’agrandit lorsque Rahan arrive au bord.
+Présentation des structures :
+Position: une simple structure pour représenter les cordonnées de tous les objets  
+typedef struct{
+    int X,Y;
+ } position;
+Equipement : l’idées est de faire un tableau de cette structure et vu que pour chaque type d’équipement je dois avoir plusieurs instances j’ai déclaré un tableau de position pour contenir les différente cordonnées des équipements.
+J’ai fait la même chose pour les autres structures Rochet, monstre, nourriture.
+
+
+
+ typedef struct{
+    char description[150];
+    char stats[20];
+    char nom[40];
+    position positionE[20];
+}equipement;
+
+Rahan : j’ai mis les données nécessaires et vu que j’ai 3 type d’équipements j’ai déclaré un tableau d’entier que je vais stocker des 1 si j’ai ramassé l’Equipment sinon 0 , pour éviter de le ramasser deux fois .      
+typedef struct{
+     int pointVie;
+     int sante;
+     int force;
+     int vitesse;
+     position positionR;
+     int Equipement[3];
+
+ }Rahan;
+Etapes : j’ai créé cette structure pour pouvoir retourner en arrière, car si on augmente la taille de la matrice donc on va allouer une autre matrice et donc on doit libérer l’ancienne et pour cela j’ai opter 
+A crier cette structure pour stocker les matrice, // j’ai fait un tableau sur la pille pour stocker 
+typedef struct {
+ int lignes;
+ int colonnes;
+ char **matrice;
+ }etapes; 
+Présentation des principales fonction :
+Les fonctions définition* :   
+	Louer la mémoire je loue nbrTe case ce qui correspond au nombre de Types d’équipements.
+	  Je rempli les cases de description …  Avec la fonction snprintf que j’ai trouvé dans un cours de C 
+	Pour chaque type j’ai fait nbrE qui correspond au nombre de équipements pour chaque type et j’ai affecter pour les positions des nombres aléatoires.
+	(char*). Chaque élément de ce tableau sera un pointeur vers un tableau de caractères (char). En d'autres termes, la première allocation crée une matrice de pointeurs.
+	J’ai fait la même chose avec tous les types 
+
+equipement* definitionE()
+{       
+    equipement* t = (equipement*)stdprof_malloc_fonction(nbrTe * sizeof(equipement), __LINE__, __FILE__);
+    int i ;
+    int j;
+    /* Initialiser les propriétés des équipements*/
+    snprintf(t[0].description, sizeof(t[0].description), "bottes en peau de crocro");
+    snprintf(t[0].stats, sizeof(t[0].stats), "V+10");
+    snprintf(t[0].nom, sizeof(t[0].nom), "chaussures");
+
+    snprintf(t[1].description, sizeof(t[1].description), "slip en peau de mamouth");
+    snprintf(t[1].stats, sizeof(t[1].stats), "P+10");
+    snprintf(t[1].nom, sizeof(t[1].nom), "protections");
+
+    snprintf(t[2].description, sizeof(t[2].description), "lance en bois");
+    snprintf(t[2].stats, sizeof(t[2].stats), "F+5");
+    snprintf(t[2].nom, sizeof(t[2].nom), "armes");
+
+    /* Initialiser les positions des équipements*/
+    for( i = 0; i < nbrTe; i++){
+        for( j = 0; j < nbrE; j++) {
+            t[i].positionE[j].X = genererNombreAleatoire(20);  
+            t[i].positionE[j].Y = genererNombreAleatoire(20);
+        }
+    }
+
+    return t;
+}
+Fonction remplireMatrice :
+	je remplie la matrice avec mes structures a partir 
+du tableau de position de chaque objet.
+
+
+void remplirMatrice(char** matrice, int lignes, int colonnes, Rochet* rochets,
+ nourriture* nourritures,  equipement* equipements, 
+  monstre* monstres, Rahan *rahan) {
+    int i;
+    int j;
+    int x;
+    int y;
+    int Xr;
+    int Xy;
+
+/* Remplir la matrice avec des nourritures*/
+    for ( i = 0; i < nbrTn; i++) {
+        for ( j = 0; j < nbrn; j++) {
+             x = nourritures[i].positionN[j].X;
+             y = nourritures[i].positionN[j].Y;
+
+            if (x > 0 && x < lignes-1 && y > 0 && y < colonnes-1) {
+                matrice[x][y] = '*';
+            }
+        }
+    }
+…………….
+
+Fonction agrandirMatrice : 
+	J’agrandie toujours ma matrice d’une colonne ou une ligne 
+	Je commence par allouer une nouvelle matrice 
+	Je commence par remplir la nouvelle ligne ou colonne 
+avec l’ancienne ligne ou colonne 
+	Dans l’exemple suivant j’ai fait une condition qui signifie que si on est dans la colonne avant dernière en met ‘  ‘ sinon on remplit avec la valeur de l’ancienne matrice et j’ai personnaliser   les autres cas mais c’est ça l’idée  
+
+char** agrandirMatrice(char** matrice, int lignes_actuelles, int colonnes_actuelles,
+                        int nouvelles_lignes, int nouvelles_colonnes ,char d) {
+    char** nouvelleMatrice = allouerMatrice(nouvelles_lignes, nouvelles_colonnes); 
+    int j,i;   
+…..}if(d=='d'){
+       for( i=0;i<nouvelles_lignes;i++)
+            nouvelleMatrice[i][nouvelles_colonnes-1]=matrice[i][colonnes_actuelles-1];
+
+        for ( i = 0; i < nouvelles_lignes; i++) {
+            for ( j = 0; j < nouvelles_colonnes-1; j++) {
+                    if((j!=(colonnes_actuelles-1)||(j==colonnes_actuelles-1 && (i==0 || i== lignes_actuelles-1)))){
+                        nouvelleMatrice[i][j] = matrice[i][j];
+                    }else{
+                        nouvelleMatrice[i][j]=' ';
+                    }
+            }
+        }
+    }…..
+
+La fonction initialisation* :
+	Je loue dynamiquement pour rahan et je l’initialise avec les données passer en paramètre   
+Rahan* initialiserRahan(int pointVie, int sante, int force, int vitesse, int X, int Y) {
+    Rahan* rahan = (Rahan*)stdprof_malloc_fonction(sizeof(Rahan), __LINE__, __FILE__);
+    rahan->pointVie = pointVie;
+    rahan->sante = sante;
+    rahan->force = force;
+    rahan->vitesse = vitesse;
+    /* insperer du tri par comptage si je n'ai aucun equipement dans 0 et 1 sinon et chaque case du tableau corespend a une classe d'equipemment.*/  
+    rahan->Equipement[0]=0;
+    rahan->Equipement[1]=0;
+    rahan->Equipement[2]=0;
+    rahan->positionR.X = X;
+    rahan->positionR.Y = Y;
+
+    return rahan;
+} 
+
+
+
+
+La fonction deplacer* :
+	La variable q représente la nouvelle position de Rahan 
+	Et dans cette exemple si q==0 donc on agrandi la matrice et on change pas la position de Rahan « c’est un choix »
+	 Si c’est un équipement on va équiper Rahan et on le déplace 
+	Si c’est une nourriture on va la manger et on change la position de Rahan 
+	Si c’est un rochet on arrête 
+	Si c’est un monstre en vas le combattre et si on gagne je déplace Rahan sinon on quitte tout la partie 
+	Le même principe pour les autres déplacements 
+char ** deplacerHaut(Rahan* rahan,char **matrice,int *ligne, int *colonne,nourriture *n,
+monstre *m,equipement* e, Rochet *r,int *tableau,int index,etapes *etape,FILE *file)
+{   
+    int xR = rahan->positionR.X;
+    int yR = rahan->positionR.Y;
+    int q=xR-1;
+    if(q==0){  
+        int Nligne=*ligne+1;
+        char **matrice2= agrandirMatrice(matrice,*ligne,*colonne,Nligne,*colonne,'H');
+        modifierCordR(rahan,xR+1,yR);
+        modifierCordEMN('g',n,m,e,r);
+        *ligne=*ligne+1;
+                tableau[index]=1;
+
+           
+        return matrice2;
+    }else if(matrice[q][yR]=='#' || matrice[q][yR]=='Y' ){
+      
+        return matrice;
+
+    }else if(matrice[q][yR]=='*'){
+        
+        Soigner(rahan,q,yR,n);
+        matrice[q+1][yR] =' ';
+        matrice[q][yR] ='R';
+        modifierCordR(rahan,q,yR);
+        return matrice;
+
+    }else if(matrice[q][yR]=='!'){
+        
+        equiper(rahan,q,yR,e);
+        matrice[q+1][yR] =' ';
+        matrice[q][yR] ='R';
+        modifierCordR(rahan,q,yR);
+        return matrice;
+
+    }else if(matrice[q][yR] == ' '){
+
+        matrice[q+1][yR] =' ';
+        matrice[q][yR] ='R';
+         modifierCordR(rahan,q,yR);
+        return matrice;
+
+    }else if(matrice[q][yR] == '@'){
+        if(combatre(rahan,m,q,yR)){
+            Liberation(rahan,e,etape,n,r,m,index,tableau,file);
+        }else{
+            matrice[q+1][yR] =' ';
+            matrice[q][yR] ='R';
+            modifierCordR(rahan,q,yR);
+            return matrice;
+        }
+    }
+    return matrice;   }
+la fonction soigner :
+	On parcourt les types dans la boucle dons l’indice est i et les objets de ce type dans la boucle avec l’indice j 
+	 Si on trouve la position de la nourriture manger on soigne Rahan en fonction du type de la nourriture 
+void Soigner(Rahan *rahan,int X,int Y,nourriture *n){
+    int i,j;
+    for(i=0;i<nbrTe;i++){
+        for( j=0;j<nbrTe;j++) {
+            if(n[i].positionN[j].X==X && n[i].positionN[j].Y==Y){
+                if(i==0){
+                    santeR(rahan,3);
+                    return;
+                }else{
+                    santeR(rahan,25);
+                    return; /*  si on trouve que y a par azard une autre nourriture qui a la meme cordoée */
+                }
+            }
+        }
+    }
+
+}
+
+La fonction santeR :
+	Si la sante de Rahan + la nourriture depasse les point de Vie donc on va rajouter à la sante jusqu’à le max (pointVie)
+	Sinon je rajoute a sa santé  la nourriture 
+void santeR(Rahan *rahan,int s){
+    int santeRahan=rahan->sante;
+    int pointVie=rahan->pointVie;
+    santeRahan+=s;
+    if(pointVie<=santeRahan){
+        rahan->sante=pointVie;
+    }else{
+        rahan->sante=santeRahan;
+    }
+
+}
+la fonction equiper :
+	Comme la fonction soigner le même principe 
+
+void equiper(Rahan *rahan,int q,int yR,equipement *e){
+    int i,j;
+    for( i=0 ;i<nbrTe;i++){
+        for( j=0 ;j<nbrE;j++){
+            if(e[i].positionE[j].X==q && e[i].positionE[j].Y==yR){
+                if(e[i].nom=="chaussures"){
+                    equiperRahan(rahan,0);
+                }else if(e[i].nom=="protections"){
+                    equiperRahan(rahan,1);
+                }else{
+                    equiperRahan(rahan,2);
+                }
+            }
+        }
+    }
+
+}
+
+La fonction equiperRahan :
+	Je vérifie si j’ai déjà cet équipement sinon je rajoute les pouvoirs 
+	Et je mets un 1 dans la case qui correspond à l’objet pour les prochaine fois  et j’affiche un message.
+
+
+void equiperRahan(Rahan *rahan,int classe){
+    if(classe==0){
+        if(rahan->Equipement[classe]==0){
+            rahan->vitesse=2;/* c'est un choix;*/
+            rahan->Equipement[classe]=1;/* pour que les prochain tours on ne rajoute pas */
+            printf("\n,bottes en peau de crocro, V+10, chaussures}\n");
+        }
+        return;
+    }else if(classe==1){….
+La fonction jouer :
+	On lit dans le fichier les caractères jusqu’à lafin du fichier 
+	Si c’est un retour à la ligne en l’ignore 
+	Si c’est un # on parcourt tout la ligne jusqu’à EOF OU \n 
+	Sinon je lie le caractère et je déplace en fonction de ce dernier et je rentre dans une boucle pour déplacer en fonction de la vitesse de Rahan  
+
+void jouer(etapes *etapee,Rahan *rahan,int *i,int *ligne,int *colonne,nourriture *n,monstre *m,
+    equipement *e,Rochet *r,int *tableau,FILE *fichier){
+            char reponse;
+            int j;
+    while ((reponse = fgetc(fichier)) != EOF){
+    if (reponse == '\n') {
+        continue;  
+
+    }else if(reponse == '#'){
+            sauterLigne(fichier);
+    }else{
+    (*i)++;
+  
+    printf("\n>>");
+
+    switch(reponse){
+        case 'b':
+             printf("\n %c\n ",reponse);
+            for(j=0;j<= rahan->vitesse;j++){
+            etapee[*i].matrice=deplacerBas(rahan,etapee[*i-1].matrice,ligne,colonne,n,m,e,r,tableau,*i,etapee,fichier);
+            etapee[*i].lignes=*ligne;
+            etapee[*i].colonnes=*colonne;
+            (*i)++;
+            }
+            (*i)--;
+
+            break;……………
+int combatre(Rahan *rahan,monstre *m,int x,int y) ; /* je cherche le monstre dans le tableau de monstre et j’appelle la fonction combat et si j’ai réussie a vaincre le monstre je retourne 0 sinon 1 
+int combat(Rahan *rahan,int santeM,int forceM,char *nom);
+  Je passe en argument la sante du monstre et sa force et je commence par enlever de sa sante la force de Rahan et je rentre dans une boucle et je sors si   l’un des deux est mort et je retourn 0 si c’est Rahan et 1 si rahan qui a gagné.
+
+Voici comment on peut libérer une matrice mais nous on n’a pas qu’une seule matrice ! 
+void libererMatrice(char **matrice, int lignes) {
+    int i;
+    for ( i = 0; i < lignes; i++) {
+         stdprof_free(matrice[i]); /* Libérer chaque ligne*/
+    }
+    stdprof_free(matrice); /* Libérer le tableau de pointeurs de lignes*/
+}
+Et dans ce cas quand vois l’utilité du tableau que on ’a passer en paramètre, j’ai remarqué que quand on se déplace dans la matrice on renvoie la même matrice et on la stocke dans le tableau du type étape et on renvoie une autre matrice quand ont agrandie la matrice et pour cela j’ai fait un tableau qui marche en parallèle avec le tableau des étapes et donc je mis un 0 si c’est la même
+Matrice et je mis un 1 sinon. Avant tout en l’initialise a 0 dans toutes les case sauf la première on met 1. 
+
+
+
+
+
+
+
